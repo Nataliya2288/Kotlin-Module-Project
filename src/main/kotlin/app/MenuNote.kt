@@ -37,8 +37,18 @@ class MenuNote (private val archive: Archive) {
     private fun createNote() {
         print("\nВведите название заметки: > ")
         val newNameNote = readln().trim() // Удаляем  пробелы
+        if (newNameNote.isEmpty()) {
+            println("Ошибка: название заметки не может быть пустым")
+            menuNotes()
+            return
+        }
         print("\nВведите текст заметки: > ")
         val textNote = readln().trim()
+        if (textNote.isEmpty()) {
+            println("Ошибка: заметка не может быть пустой")
+            menuNotes()
+            return
+        }
         archive.listOfNotes.add(
             Note(
                 newNameNote,

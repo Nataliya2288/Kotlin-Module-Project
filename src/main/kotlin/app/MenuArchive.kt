@@ -38,6 +38,11 @@ class MenuArchive {
     private fun createArchive() { // функция создания Архива
         print("\nВведите название архива: > ")
         val nameArchive = readln().trim() // Удаляем начальные и конечные пробелы ввода
+        if (nameArchive.isEmpty()) {
+            println("Ошибка: название архива не может быть пустым")
+            menuArchive()
+            return
+        }
         listOfArchives.add(Archive(nameArchive, mutableListOf())) // добавляем объект Архив в лист Архивов
         println("Архив $nameArchive создан")
         menuArchive() // возвращаемся в функцию меню Архивов
